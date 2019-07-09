@@ -30,7 +30,7 @@ function insertEvent(topic,message) {
     //collection.insertOne({[topic]:message.toString()})
 	collection.updateMany(
 		{ _id:key }, 
-		{ $push: {  topic: { message:message.toString(),  date:new Date() } } }, 
+		{ $push: {  topic: { message:message.toString(),  date:Date().now } } }, 
 	 	{ upsert:true },
 	 	function(err,docs) {
 			if(err) {
